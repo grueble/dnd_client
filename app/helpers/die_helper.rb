@@ -1,0 +1,2 @@
+module DieHelper
+end

@@ -1,0 +1,31 @@
+<%= form_for @dice_roller, :html => {:class => 'form-horizontal' } do |form| %>
+  <% if @dice_roller.errors.present? %>
+    <ul>
+      <% @dice_roller.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :sides, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :sides %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :num_dice, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :num_dice %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset class="form-actions">
+    <%= form.submit "Create", :class => 'btn btn-primary' %>
+  </fieldset>
+<% end %>
