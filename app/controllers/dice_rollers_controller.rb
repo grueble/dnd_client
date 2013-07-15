@@ -9,9 +9,7 @@ class DiceRollersController < ApplicationController
   
   def create
     @dice_roller = DiceRoller.create(params[:dice_roller])
-    num_dice.each do |die|
-      Dice.create(params[:sides])
-    end
+    @dice = Dice.create(params[:sides])
     if @dice_roller.save
       redirect_to @dice_roller
     else

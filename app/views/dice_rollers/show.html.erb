@@ -1,0 +1,5 @@
+<% @dice_roller.num_dice.times do %>
+  <%= @dice.sides %> sided dice = <%= @dice.roll %>
+<% end %>
+
+<%= button_to("New Dice", root_url) %>
