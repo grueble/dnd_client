@@ -1,8 +1,22 @@
-class DiceRoller < ActiveRecord::Base
-  attr_accessible :num_dice, :sides
+class DiceRoller
+  include ActiveModel::Validations
+  extend ActiveModel::Translation
+  include ActiveModel::Conversion
   
-  validates :num_dice, :sides, :presence => true
-  validates_numericality_of :num_dice, :sides, :only_integer => true
+  attr_accessor :num_dice, :sides
   
-  has_many :dice
+  validates :num_dice, :sides, :presence => true, :numericality => {:only_integer => true}
+  
+  def initialize(attributes = {})
+    @num_dice = attributes[:num_dice]
+    @sides = attributes[:sides]
+  end
+  
+  def roll_die
+    1.step(sides.to_i, 1).to_a.sample
+  end
+  
+  def persisted?
+    false
+  end
 end

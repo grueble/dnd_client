@@ -11,20 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715231632) do
-
-  create_table "dice_rollers", :force => true do |t|
-    t.integer  "num_dice",   :null => false
-    t.integer  "sides",      :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "die", :force => true do |t|
-    t.integer  "sides",          :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.integer  "dice_roller_id", :null => false
-  end
+ActiveRecord::Schema.define(:version => 0) do
 
 end

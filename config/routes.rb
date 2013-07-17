@@ -1,7 +1,5 @@
 DndClient::Application.routes.draw do
-  resources :die, :only => [ :new, :show, :create ]
-  
-  resources :dice_rollers, :only => [ :new, :show, :create ]
+  resource :dice_roller, :only => [ :create ]
   
   root :to => 'dice_rollers#new'
   # The priority is based upon order of creation:
