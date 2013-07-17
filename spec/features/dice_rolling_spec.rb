@@ -4,9 +4,11 @@ describe "the dice rolling process" do
   it "creates a dice roller object" do
     visit '/'
     
-    fill_in 'num_dice', :with => 1
-    fill_in 'sides', :with => 6
+    fill_in 'Sides', :with => 1
+    fill_in 'Num dice', :with => 1
     
-    expect{ click_button 'Create' }.to change{ DiceRoller.count }.by(1)
+    click_button 'Create'
+    
+    page.should have_content "1-sided die roll = 1"
   end
 end
