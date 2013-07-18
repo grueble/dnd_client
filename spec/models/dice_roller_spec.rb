@@ -10,7 +10,11 @@ describe DiceRoller do
     let(:dice_roller) { DiceRoller.new(:num_dice => 1, :sides => 6) }
     
     it 'returns an acceptable value for a roll' do
-      dice_roller.roll_die.should be_within(3).of(3)
+      dice_roller.roll_die.should be_between(1, 6)
     end
+  end
+  
+  describe '#rolled_dice' do
+    
   end
 end

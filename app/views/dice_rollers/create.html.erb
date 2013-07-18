@@ -1,6 +1,5 @@
-<% @dice_roller.num_dice.to_i.times do %>
-  <%= @dice_roller.sides %>-sided die roll = <%= @dice_roller.roll_die %>
-  <br>
+<% @dice_roller.rolled_dice.each do |die| %>
+  <%= @dice_roller.sides %>-sided die roll = <%= die %>
 <% end %>
-
+<br>
 <%= button_to("New Dice", root_url) %>

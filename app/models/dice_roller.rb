@@ -19,4 +19,8 @@ class DiceRoller
   def persisted?
     false
   end
+  
+  def rolled_dice
+    @rolled_dice ||= (1..num_dice.to_i).map{ roll_die }
+  end
 end
