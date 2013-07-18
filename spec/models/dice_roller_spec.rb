@@ -7,6 +7,10 @@ describe DiceRoller do
   it { should validate_numericality_of :num_dice }
   
   describe '#roll_die' do
+    let(:dice_roller) { DiceRoller.new(:num_dice => 1, :sides => 6) }
     
+    it 'returns an acceptable value for a roll' do
+      dice_roller.roll_die.should be_within(3).of(3)
+    end
   end
 end
