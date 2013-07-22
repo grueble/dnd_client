@@ -1,0 +1,18 @@
+Name: <%= @character.name %>, lvl. <%= @character.level %>
+<br>
+
+HP: <%= @character.hit_points %> <br>
+
+STR: <%= @character.str %> | +<%= @character.attribute_bonus(@character.str) %> <br>
+DEX: <%= @character.dex %> | +<%= @character.attribute_bonus(@character.dex) %> <br>
+CON: <%= @character.con %> | +<%= @character.attribute_bonus(@character.con) %> <br>
+INT: <%= @character.int %> | +<%= @character.attribute_bonus(@character.int) %> <br>
+WIS: <%= @character.wis %> | +<%= @character.attribute_bonus(@character.wis) %> <br>
+CHA: <%= @character.cha %> | +<%= @character.attribute_bonus(@character.cha) %> <br>
+
+Fort: <%= @character.calculate_fortitude %> <br>
+Reflex: <%= @character.calculate_reflex %> <br>
+Will: <%= @character.calculate_will %> <br>
+
+Base Atk: <%= @character.calculate_base_atk %> <br>
+Grapple: <%= @character.calculate_grapple %> <br>

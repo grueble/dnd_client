@@ -1,0 +1,99 @@
+<%= form_for @character, :html => {:class => 'form-horizontal' } do |form| %>
+  <% if @character.errors.present? %>
+    <ul>
+      <% @character.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :name %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :level, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :level %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :hit_die, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :hit_die %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :str, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :str %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :dex, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :dex %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :con, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :con %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :int, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :int %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :wis, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :wis %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :cha, :class => 'control-label' %>
+      <div class="controls">
+        <%= form.text_field :cha %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <%= form.select :base_atk_prog, 'Base Attack Bonus' => @character.base_atk_options %>
+  <%= form.select :fort_save_prog, 'Fortitude Save' => @character.fort_save_options %>
+  <%= form.select :reflex_save_prog, 'Reflex Save' => @character.reflex_save_options %>
+  <%= form.select :will_save_prog, 'Will Save' => @character.will_save_options %>
+  
+  <fieldset class="form-actions">
+    <%= form.submit "Create", :class => 'btn btn-primary' %>
+  </fieldset>
+<% end %>
