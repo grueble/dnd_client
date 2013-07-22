@@ -43,9 +43,10 @@ describe Character do
   it { should validate_numericality_of(:wisdom) }
   it { should validate_numericality_of(:charisma) }
   
-  describe '#initialize_hit_points' do
-    it "should correctly calculate a character's hp" do
-      subject.initialize_hit_points.should == 8
+  describe '#initialize_hit_points' do    
+    it "correctly stores a character's hp" do
+      subject.initialize_hit_points
+      subject.hit_points.should == 8
     end
   end
   

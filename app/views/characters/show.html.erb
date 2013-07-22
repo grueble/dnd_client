@@ -3,12 +3,23 @@ Name: <%= @character.name %>, lvl. <%= @character.level %>
 
 HP: <%= @character.hit_points %> <br>
 
-STR: <%= @character.str %> | +<%= @character.attribute_bonus(@character.str) %> <br>
-DEX: <%= @character.dex %> | +<%= @character.attribute_bonus(@character.dex) %> <br>
-CON: <%= @character.con %> | +<%= @character.attribute_bonus(@character.con) %> <br>
-INT: <%= @character.int %> | +<%= @character.attribute_bonus(@character.int) %> <br>
-WIS: <%= @character.wis %> | +<%= @character.attribute_bonus(@character.wis) %> <br>
-CHA: <%= @character.cha %> | +<%= @character.attribute_bonus(@character.cha) %> <br>
+STR: <%= @character.strength %> | +
+<%= @character.attribute_bonus(@character.strength) %> <br>
+
+DEX: <%= @character.dexterity %> | +
+<%= @character.attribute_bonus(@character.dexterity) %> <br>
+
+CON: <%= @character.constitution %> | +
+<%= @character.attribute_bonus(@character.constitution) %> <br>
+
+INT: <%= @character.intelligence %> | +
+<%= @character.attribute_bonus(@character.intelligence) %> <br>
+
+WIS: <%= @character.wisdom %> | +
+<%= @character.attribute_bonus(@character.wisdom) %> <br>
+
+CHA: <%= @character.charisma %> | +
+<%= @character.attribute_bonus(@character.charisma) %> <br>
 
 Fort: <%= @character.calculate_fortitude %> <br>
 Reflex: <%= @character.calculate_reflex %> <br>

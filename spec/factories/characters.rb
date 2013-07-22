@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :character do
     name 'Drizzt'
     level 1
-    hit_points 8
     hit_die 8
     strength 14
     dexterity 18

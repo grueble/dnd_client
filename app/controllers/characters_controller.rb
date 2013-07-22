@@ -9,8 +9,11 @@ class CharactersController < ApplicationController
   
   def create
     @character = Character.new(params[:character])
+    @character.initialize_hit_points
     if @character.save
       redirect_to @character
+    else
+      render :new
     end
   end
 end

@@ -6,10 +6,11 @@ class Character < ActiveRecord::Base
   validates :name, :level, :hit_points, :hit_die, :strength, :dexterity, :constitution, 
             :intelligence, :wisdom, :charisma, :base_atk_prog, :fort_save_prog, 
             :reflex_save_prog, :will_save_prog, :presence => true
+            
   validates :level, :hit_points, :hit_die, :strength, :dexterity, :constitution,
             :intelligence, :wisdom, :charisma, :numericality => { :only_integer => true }
             
-  before_save :hit_points
+  before_validation :initialize_hit_points, :on => :create
   
   BASE_ATK = [ 'good', 'average', 'poor' ]
   
@@ -36,17 +37,20 @@ class Character < ActiveRecord::Base
   end
   
   def initialize_hit_points
-    hit_points = (hit_die + attribute_bonus(constitution))
+    self.hit_points = (hit_die + attribute_bonus(constitution))
     dice_roller = DiceRoller.new(:num_dice => level - 1, :sides => hit_die)
     dice_rolls = dice_roller.rolled_dice
     (level - 1).times do |l| 
-      hit_points += (dice_rolls[l] + attribute_bonus(constitution))
+      self.hit_points += (dice_rolls[l] + attribute_bonus(constitution))
     end
-    hit_points
   end
   
   def attribute_bonus(attribute)
-    (attribute - 10) / 2
+    if attribute > 10
+      (attribute - 10) / 2
+    else
+      (attribute - 10).abs / 2
+    end
   end
   
   def calculate_base_atk
