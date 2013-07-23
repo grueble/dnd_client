@@ -7,13 +7,13 @@ FactoryGirl.define do
     hit_die 8
     strength 14
     dexterity 18
-    constitution 11
+    constitution 8
     intelligence 13
-    wisdom 12
+    wisdom 11
     charisma 17
-    base_atk_prog 'good'
-    fort_save_prog 'good'
-    reflex_save_prog 'good'
-    will_save_prog 'poor'
+    base_atk_progression 'good'
+    fortitude_save_progression 'good'
+    reflex_save_progression 'good'
+    will_save_progression 'poor'
   end
 end

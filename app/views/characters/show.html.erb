@@ -4,22 +4,22 @@ Name: <%= @character.name %>, lvl. <%= @character.level %>
 HP: <%= @character.hit_points %> <br>
 
 STR: <%= @character.strength %> | +
-<%= @character.attribute_bonus(@character.strength) %> <br>
+<%= @character.attribute_bonus(:strength) %> <br>
 
 DEX: <%= @character.dexterity %> | +
-<%= @character.attribute_bonus(@character.dexterity) %> <br>
+<%= @character.attribute_bonus(:dexterity) %> <br>
 
 CON: <%= @character.constitution %> | +
-<%= @character.attribute_bonus(@character.constitution) %> <br>
+<%= @character.attribute_bonus(:constitution) %> <br>
 
 INT: <%= @character.intelligence %> | +
-<%= @character.attribute_bonus(@character.intelligence) %> <br>
+<%= @character.attribute_bonus(:intelligence) %> <br>
 
 WIS: <%= @character.wisdom %> | +
-<%= @character.attribute_bonus(@character.wisdom) %> <br>
+<%= @character.attribute_bonus(:wisdom) %> <br>
 
 CHA: <%= @character.charisma %> | +
-<%= @character.attribute_bonus(@character.charisma) %> <br>
+<%= @character.attribute_bonus(:charisma) %> <br>
 
 Fort: <%= @character.calculate_fortitude %> <br>
 Reflex: <%= @character.calculate_reflex %> <br>

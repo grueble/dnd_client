@@ -13,10 +13,10 @@ describe Character do
   it { should allow_mass_assignment_of(:intelligence) }
   it { should allow_mass_assignment_of(:wisdom) }
   it { should allow_mass_assignment_of(:charisma) }
-  it { should allow_mass_assignment_of(:base_atk_prog) }
-  it { should allow_mass_assignment_of(:fort_save_prog) }
-  it { should allow_mass_assignment_of(:reflex_save_prog) }
-  it { should allow_mass_assignment_of(:will_save_prog) }
+  it { should allow_mass_assignment_of(:base_atk_progression) }
+  it { should allow_mass_assignment_of(:fortitude_save_progression) }
+  it { should allow_mass_assignment_of(:reflex_save_progression) }
+  it { should allow_mass_assignment_of(:will_save_progression) }
   
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:level) }
@@ -28,10 +28,10 @@ describe Character do
   it { should validate_presence_of(:intelligence) }
   it { should validate_presence_of(:wisdom) }
   it { should validate_presence_of(:charisma) }
-  it { should validate_presence_of(:base_atk_prog) }
-  it { should validate_presence_of(:fort_save_prog) }
-  it { should validate_presence_of(:reflex_save_prog) }
-  it { should validate_presence_of(:will_save_prog) }
+  it { should validate_presence_of(:base_atk_progression) }
+  it { should validate_presence_of(:fortitude_save_progression) }
+  it { should validate_presence_of(:reflex_save_progression) }
+  it { should validate_presence_of(:will_save_progression) }
   
   it { should validate_numericality_of(:level) }
   it { should validate_numericality_of(:hit_points) }
@@ -43,21 +43,23 @@ describe Character do
   it { should validate_numericality_of(:wisdom) }
   it { should validate_numericality_of(:charisma) }
   
-  describe '#initialize_hit_points' do    
+  describe 'initializing hit points on create' do
     it "correctly stores a character's hp" do
-      subject.initialize_hit_points
-      subject.hit_points.should == 8
+      subject.hit_points.should == 7
     end
   end
   
   describe '#attribute_bonus' do
-    it "should output the proper attribute bonuses for each attribute" do
-      subject.attribute_bonus(subject.strength).should == 2
-      subject.attribute_bonus(subject.dexterity).should == 4
-      subject.attribute_bonus(subject.constitution).should == 0
-      subject.attribute_bonus(subject.intelligence).should == 1
-      subject.attribute_bonus(subject.wisdom).should == 1
-      subject.attribute_bonus(subject.charisma).should == 3
+    it "should output the proper attribute bonuses for an attribute > 10" do
+      subject.attribute_bonus(:strength).should == 2
+    end
+    
+    it "should output the proper attribute bonuses for an attribute < 10" do
+      subject.attribute_bonus(:constitution).should == -1
+    end
+    
+    it "should output the proper attribute bonuses for an attribute with no bonus" do
+      subject.attribute_bonus(:wisdom).should == 0
     end
   end
   
@@ -65,11 +67,42 @@ describe Character do
     it "should correctly calculate a character's base atk bonus" do
       subject.calculate_base_atk.should == 1
     end
+    
+    context "a character's base atk bonus" do
+      let(:character1) { create(:character, :level => 5, :base_atk_progression => 'good') }
+      let(:character2) { create(:character, :level => 5, :base_atk_progression => 'average') }
+      let(:character3) { create(:character, :level => 5, :base_atk_progression => 'poor') }
+      
+      it "should be correct for a 'good' base atk progression" do
+        character1.calculate_base_atk.should == 5
+      end
+      
+      it "should be correct for a 'average' base atk progression" do
+        character2.calculate_base_atk.should == 3
+      end
+      
+      it "should be correct for a 'poor' base atk progression" do
+        character3.calculate_base_atk.should == 2
+      end
+    end
   end
   
   describe '#calculate_fortitude' do
     it "should correctly calculate a character's fortitude save" do
-      subject.calculate_fortitude.should == 2
+      subject.calculate_fortitude.should == 1
+    end
+    
+    context "a character's base fortitude save" do
+      let(:character1) { create(:character, :constitution => 10, :fortitude_save_progression => 'good') }
+      let(:character2) { create(:character, :constitution => 10, :fortitude_save_progression => 'poor') }
+      
+      it "should be correct for a 'good' fortitude save progression" do
+        character1.calculate_fortitude.should == 2
+      end
+      
+      it "should be correct for a 'poor' fortitude save progression" do
+        character2.calculate_fortitude.should == 0
+      end
     end
   end
   
@@ -77,11 +110,37 @@ describe Character do
     it "should correctly calculate a character's reflex save" do
       subject.calculate_reflex.should == 6
     end
+    
+    context "a character's base reflex save" do
+      let(:character1) { create(:character, :dexterity => 10, :reflex_save_progression => 'good') }
+      let(:character2) { create(:character, :dexterity => 10, :reflex_save_progression => 'poor') }
+      
+      it "should be correct for a 'good' reflex save progression" do
+        character1.calculate_reflex.should == 2
+      end
+      
+      it "should be correct for a 'poor' reflex save progression" do
+        character2.calculate_reflex.should == 0
+      end
+    end
   end
   
   describe '#calculate_will' do
     it "should correctly calculate a character's will save" do
-      subject.calculate_will.should == 1
+      subject.calculate_will.should == 0
+    end
+    
+    context "a character's base will save" do
+      let(:character1) { create(:character, :wisdom => 10, :will_save_progression => 'good') }
+      let(:character2) { create(:character, :wisdom => 10, :will_save_progression => 'poor') }
+      
+      it "should be correct for a 'good' will save progression" do
+        character1.calculate_will.should == 2
+      end
+      
+      it "should be correct for a 'poor' will save progression" do
+        character2.calculate_will.should == 0
+      end
     end
   end
   
@@ -89,35 +148,5 @@ describe Character do
     it "should correctly calculate a character's grapple bonus" do
       subject.calculate_grapple.should == 3
     end   
-  end
-  
-  describe '#good_save_progression' do
-    it 'should return the proper base save value' do
-      subject.good_save_progression.should == 2
-    end
-  end
-  
-  describe '#poor_save_progressions' do
-    it 'should return the proper base save value' do
-      subject.poor_save_progression.should == 0
-    end
-  end
-  
-  describe '#good_base_atk' do
-    it 'should return the proper base atk value' do
-      subject.good_base_atk.should == 1
-    end
-  end
-  
-  describe '#average_base_atk' do
-    it 'should return the proper base atk value' do
-      subject.average_base_atk.should == 0
-    end
-  end
-  
-  describe '#poor_base_atk' do
-    it 'should return the proper base atk value' do
-      subject.poor_base_atk.should == 0
-    end
   end
 end

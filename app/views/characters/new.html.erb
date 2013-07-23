@@ -88,10 +88,10 @@
     </div>
   </fieldset>
   
-  <%= form.select :base_atk_prog, 'Base Attack Bonus' => @character.base_atk_options %>
-  <%= form.select :fort_save_prog, 'Fortitude Save' => @character.fort_save_options %>
-  <%= form.select :reflex_save_prog, 'Reflex Save' => @character.reflex_save_options %>
-  <%= form.select :will_save_prog, 'Will Save' => @character.will_save_options %>
+  <%= form.select :base_atk_prog, 'Base Attack Bonus' => Character::BASE_ATK %>
+  <%= form.select :fort_save_prog, 'Fortitude Save' => Character::FORT_SAVE %>
+  <%= form.select :reflex_save_prog, 'Reflex Save' => Character::REFLEX_SAVE %>
+  <%= form.select :will_save_prog, 'Will Save' => Character::WILL_SAVE %>
   
   <fieldset class="form-actions">
     <%= form.submit "Create", :class => 'btn btn-primary' %>
