@@ -1,11 +1,11 @@
 class Character < ActiveRecord::Base
   attr_accessible :name, :level, :hit_points, :hit_die, :strength, :dexterity, 
                   :constitution, :intelligence, :wisdom, :charisma, 
-                  :base_atk_progression, :fortitude_save_progression, 
+                  :base_attack_progression, :fortitude_save_progression, 
                   :reflex_save_progression, :will_save_progression
                   
   validates :name, :level, :hit_points, :hit_die, :strength, :dexterity, :constitution, 
-            :intelligence, :wisdom, :charisma, :base_atk_progression, :fortitude_save_progression, 
+            :intelligence, :wisdom, :charisma, :base_attack_progression, :fortitude_save_progression, 
             :reflex_save_progression, :will_save_progression, :presence => true
             
   validates :level, :hit_points, :hit_die, :strength, :dexterity, :constitution,
@@ -25,42 +25,24 @@ class Character < ActiveRecord::Base
     (self.send(attribute) - 10) / 2
   end
   
-  def calculate_base_atk
-    if base_atk_progression == 'good'
-      good_base_atk
-    elsif base_atk_progression == 'average'
-      average_base_atk
-    else
-      poor_base_atk
-    end
+  def calculate_base_attack
+    self.send("#{base_attack_progression}_base_attack")
   end
   
   def calculate_fortitude
-    if fortitude_save_progression == 'good'
-      good_save_progression + attribute_bonus(:constitution)
-    else
-      poor_save_progression + attribute_bonus(:constitution)
-    end
+    self.send("#{fortitude_save_progression}_save_progression") + attribute_bonus(:constitution)
   end
   
   def calculate_reflex
-    if reflex_save_progression == 'good'
-      good_save_progression + attribute_bonus(:dexterity)
-    else
-      poor_save_progression + attribute_bonus(:dexterity)
-    end
+    self.send("#{reflex_save_progression}_save_progression") + attribute_bonus(:dexterity)
   end
   
   def calculate_will
-    if will_save_progression == 'good'
-      good_save_progression + attribute_bonus(:wisdom)
-    else
-      poor_save_progression + attribute_bonus(:wisdom)
-    end
+    self.send("#{will_save_progression}_save_progression") + attribute_bonus(:wisdom)
   end
   
   def calculate_grapple
-    calculate_base_atk + attribute_bonus(:strength)
+    calculate_base_attack + attribute_bonus(:strength)
   end
 
   private
@@ -92,15 +74,15 @@ class Character < ActiveRecord::Base
     level/3
   end
     
-  def good_base_atk
+  def good_base_attack
     level
   end
   
-  def average_base_atk
+  def average_base_attack
     (3 * level) / 4
   end
   
-  def poor_base_atk
+  def poor_base_attack
     level / 2
   end
 end

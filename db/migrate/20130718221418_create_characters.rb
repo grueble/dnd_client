@@ -11,7 +11,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :intelligence, :null => false
       t.integer :wisdom, :null => false
       t.integer :charisma, :null => false
-      t.string :base_atk_progression, :null => false
+      t.string :base_attack_progression, :null => false
       t.string :fortitude_save_progression, :null => false
       t.string :reflex_save_progression, :null => false
       t.string :will_save_progression, :null => false

@@ -13,7 +13,7 @@ describe Character do
   it { should allow_mass_assignment_of(:intelligence) }
   it { should allow_mass_assignment_of(:wisdom) }
   it { should allow_mass_assignment_of(:charisma) }
-  it { should allow_mass_assignment_of(:base_atk_progression) }
+  it { should allow_mass_assignment_of(:base_attack_progression) }
   it { should allow_mass_assignment_of(:fortitude_save_progression) }
   it { should allow_mass_assignment_of(:reflex_save_progression) }
   it { should allow_mass_assignment_of(:will_save_progression) }
@@ -28,7 +28,7 @@ describe Character do
   it { should validate_presence_of(:intelligence) }
   it { should validate_presence_of(:wisdom) }
   it { should validate_presence_of(:charisma) }
-  it { should validate_presence_of(:base_atk_progression) }
+  it { should validate_presence_of(:base_attack_progression) }
   it { should validate_presence_of(:fortitude_save_progression) }
   it { should validate_presence_of(:reflex_save_progression) }
   it { should validate_presence_of(:will_save_progression) }
@@ -63,26 +63,26 @@ describe Character do
     end
   end
   
-  describe '#calculate_base_atk' do
-    it "should correctly calculate a character's base atk bonus" do
-      subject.calculate_base_atk.should == 1
+  describe '#calculate_base_attack' do
+    it "should correctly calculate a character's base attack bonus" do
+      subject.calculate_base_attack.should == 1
     end
     
-    context "a character's base atk bonus" do
-      let(:character1) { create(:character, :level => 5, :base_atk_progression => 'good') }
-      let(:character2) { create(:character, :level => 5, :base_atk_progression => 'average') }
-      let(:character3) { create(:character, :level => 5, :base_atk_progression => 'poor') }
+    context "a character's base attack bonus" do
+      let(:character1) { create(:character, :level => 5, :base_attack_progression => 'good') }
+      let(:character2) { create(:character, :level => 5, :base_attack_progression => 'average') }
+      let(:character3) { create(:character, :level => 5, :base_attack_progression => 'poor') }
       
-      it "should be correct for a 'good' base atk progression" do
-        character1.calculate_base_atk.should == 5
+      it "should be correct for a 'good' base attack progression" do
+        character1.calculate_base_attack.should == 5
       end
       
-      it "should be correct for a 'average' base atk progression" do
-        character2.calculate_base_atk.should == 3
+      it "should be correct for a 'average' base attack progression" do
+        character2.calculate_base_attack.should == 3
       end
       
-      it "should be correct for a 'poor' base atk progression" do
-        character3.calculate_base_atk.should == 2
+      it "should be correct for a 'poor' base attack progression" do
+        character3.calculate_base_attack.should == 2
       end
     end
   end
