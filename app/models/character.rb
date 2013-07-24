@@ -14,7 +14,7 @@ class Character < ActiveRecord::Base
   validates :fortitude_save_progression, :reflex_save_progression, 
             :will_save_progression, :inclusion => { :in => ["good", "poor"] }
             
-  validates :base_atk_progression, :inclusion => { :in ["good", "poor"] }
+  validates :base_attack_progression, :inclusion => { :in => ["good", "average", "poor"] }
             
   before_validation :initialize_hit_points, :on => :create
   
