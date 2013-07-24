@@ -14,9 +14,9 @@ describe Character do
   it { should allow_mass_assignment_of(:wisdom) }
   it { should allow_mass_assignment_of(:charisma) }
   it { should allow_mass_assignment_of(:base_attack_progression) }
-  it { should allow_mass_assignment_of(:fortitude_save_progression) }
-  it { should allow_mass_assignment_of(:reflex_save_progression) }
-  it { should allow_mass_assignment_of(:will_save_progression) }
+  it { should allow_mass_assignment_of(:fortitude_save) }
+  it { should allow_mass_assignment_of(:reflex_save) }
+  it { should allow_mass_assignment_of(:will_save) }
   
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:level) }
@@ -29,9 +29,9 @@ describe Character do
   it { should validate_presence_of(:wisdom) }
   it { should validate_presence_of(:charisma) }
   it { should validate_presence_of(:base_attack_progression) }
-  it { should validate_presence_of(:fortitude_save_progression) }
-  it { should validate_presence_of(:reflex_save_progression) }
-  it { should validate_presence_of(:will_save_progression) }
+  it { should validate_presence_of(:fortitude_save) }
+  it { should validate_presence_of(:reflex_save) }
+  it { should validate_presence_of(:will_save) }
   
   it { should validate_numericality_of(:level) }
   it { should validate_numericality_of(:hit_points) }
@@ -44,9 +44,9 @@ describe Character do
   it { should validate_numericality_of(:charisma) }
   
   it { should ensure_inclusion_of(:base_attack_progression).in_array(['good', 'average', 'poor']) }
-  it { should ensure_inclusion_of(:fortitude_save_progression).in_array(['good', 'poor']) }
-  it { should ensure_inclusion_of(:reflex_save_progression).in_array(['good', 'poor']) }
-  it { should ensure_inclusion_of(:will_save_progression).in_array(['good', 'poor']) }
+  it { should ensure_inclusion_of(:fortitude_save).in_array(['good', 'poor']) }
+  it { should ensure_inclusion_of(:reflex_save).in_array(['good', 'poor']) }
+  it { should ensure_inclusion_of(:will_save).in_array(['good', 'poor']) }
   
   describe 'initializing hit points on create' do
     it "correctly stores a character's hp" do
@@ -98,8 +98,8 @@ describe Character do
     end
     
     context "a character's base fortitude save" do
-      let(:character1) { create(:character, :constitution => 10, :fortitude_save_progression => 'good') }
-      let(:character2) { create(:character, :constitution => 10, :fortitude_save_progression => 'poor') }
+      let(:character1) { create(:character, :constitution => 10, :fortitude_save => 'good') }
+      let(:character2) { create(:character, :constitution => 10, :fortitude_save => 'poor') }
       
       it "should be correct for a 'good' fortitude save progression" do
         character1.calculate_fortitude.should == 2
@@ -117,8 +117,8 @@ describe Character do
     end
     
     context "a character's base reflex save" do
-      let(:character1) { create(:character, :dexterity => 10, :reflex_save_progression => 'good') }
-      let(:character2) { create(:character, :dexterity => 10, :reflex_save_progression => 'poor') }
+      let(:character1) { create(:character, :dexterity => 10, :reflex_save => 'good') }
+      let(:character2) { create(:character, :dexterity => 10, :reflex_save => 'poor') }
       
       it "should be correct for a 'good' reflex save progression" do
         character1.calculate_reflex.should == 2
@@ -136,8 +136,8 @@ describe Character do
     end
     
     context "a character's base will save" do
-      let(:character1) { create(:character, :wisdom => 10, :will_save_progression => 'good') }
-      let(:character2) { create(:character, :wisdom => 10, :will_save_progression => 'poor') }
+      let(:character1) { create(:character, :wisdom => 10, :will_save => 'good') }
+      let(:character2) { create(:character, :wisdom => 10, :will_save => 'poor') }
       
       it "should be correct for a 'good' will save progression" do
         character1.calculate_will.should == 2

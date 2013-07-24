@@ -12,9 +12,9 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :wisdom, :null => false
       t.integer :charisma, :null => false
       t.string :base_attack_progression, :null => false
-      t.string :fortitude_save_progression, :null => false
-      t.string :reflex_save_progression, :null => false
-      t.string :will_save_progression, :null => false
+      t.string :fortitude_save, :null => false
+      t.string :reflex_save, :null => false
+      t.string :will_save, :null => false
 
       t.timestamps
     end

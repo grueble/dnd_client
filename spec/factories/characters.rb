@@ -12,8 +12,8 @@ FactoryGirl.define do
     wisdom 11
     charisma 17
     base_attack_progression 'good'
-    fortitude_save_progression 'good'
-    reflex_save_progression 'good'
-    will_save_progression 'poor'
+    fortitude_save 'good'
+    reflex_save 'good'
+    will_save 'poor'
   end
 end
