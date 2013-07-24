@@ -43,6 +43,11 @@ describe Character do
   it { should validate_numericality_of(:wisdom) }
   it { should validate_numericality_of(:charisma) }
   
+  it { should ensure_inclusion_of(:base_attack_progression).in(['good', 'average', 'poor']) }
+  it { should ensure_inclusion_of(:fortitude_save_progression).in(['good', 'poor']) }
+  it { should ensure_inclusion_of(:reflex_save_progression).in(['good', 'poor']) }
+  it { should ensure_inclusion_of(:will_save_progression).in(['good', 'poor']) }
+  
   describe 'initializing hit points on create' do
     it "correctly stores a character's hp" do
       subject.hit_points.should == 7

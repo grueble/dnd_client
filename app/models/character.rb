@@ -11,6 +11,11 @@ class Character < ActiveRecord::Base
   validates :level, :hit_points, :hit_die, :strength, :dexterity, :constitution,
             :intelligence, :wisdom, :charisma, :numericality => { :only_integer => true }
             
+  validates :fortitude_save_progression, :reflex_save_progression, 
+            :will_save_progression, :inclusion => { :in => ["good", "poor"] }
+            
+  validates :base_atk_progression, :inclusion => { :in ["good", "poor"] }
+            
   before_validation :initialize_hit_points, :on => :create
   
   BASE_ATK = [ 'good', 'average', 'poor' ]
