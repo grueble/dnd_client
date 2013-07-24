@@ -7,6 +7,7 @@
     </ul>
   <% end %>
   
+  <br>
   <fieldset>
     <div class="control-group">
       <%= form.label :name, :class => 'control-label' %>
@@ -88,10 +89,15 @@
     </div>
   </fieldset>
   
-  <%= form.select :base_atk_progression, 'Base Attack Bonus' => Character::BASE_ATK %>
-  <%= form.select :fort_save, 'Fortitude Save' => Character::FORT_SAVE %>
-  <%= form.select :reflex_save, 'Reflex Save' => Character::REFLEX_SAVE %>
-  <%= form.select :will_save, 'Will Save' => Character::WILL_SAVE %>
+  <fieldset>
+    <div>
+      <%= form.select :base_attack_progression, 'Base Attack Bonus' => Character::BASE_ATK %>
+      <%= form.select :fortitude_save, 'Fortitude Save' => Character::BASE_SAVE %>
+      <br>
+      <%= form.select :reflex_save, 'Reflex Save' => Character::BASE_SAVE %>
+      <%= form.select :will_save, 'Will Save' => Character::BASE_SAVE %>
+    </div>
+  </fieldset>
   
   <fieldset class="form-actions">
     <%= form.submit "Create", :class => 'btn btn-primary' %>

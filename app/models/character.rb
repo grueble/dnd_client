@@ -67,14 +67,16 @@ class Character < ActiveRecord::Base
     end
   end
 
+  # save progression methods
   def good_progression
     2 + level/2
   end
-  
+
   def poor_progression
     level/3
   end
     
+  # base attack progression methods
   def good_base_attack
     level
   end
