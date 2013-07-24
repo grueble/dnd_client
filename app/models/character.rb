@@ -1,4 +1,8 @@
 class Character < ActiveRecord::Base
+  BASE_ATK = [ 'good', 'average', 'poor' ]
+  
+  BASE_SAVE = [ 'good', 'poor' ]
+  
   attr_accessible :name, :level, :hit_points, :hit_die, :strength, :dexterity, 
                   :constitution, :intelligence, :wisdom, :charisma, 
                   :base_attack_progression, :fortitude_save, 
@@ -12,15 +16,11 @@ class Character < ActiveRecord::Base
             :intelligence, :wisdom, :charisma, :numericality => { :only_integer => true }
             
   validates :fortitude_save, :reflex_save, :will_save, 
-            :inclusion => { :in => [ 'good', 'poor' ] }
+            :inclusion => { :in => BASE_SAVE }
             
-  validates :base_attack_progression, :inclusion => { :in => [ 'good', 'average', 'poor' ] }
+  validates :base_attack_progression, :inclusion => { :in => BASE_ATK }
             
   before_validation :initialize_hit_points, :on => :create
-  
-  BASE_ATK = [ 'good', 'average', 'poor' ]
-  
-  BASE_SAVE = [ 'good', 'poor' ]
   
   def attribute_bonus(attribute)
     (self.send(attribute) - 10) / 2
