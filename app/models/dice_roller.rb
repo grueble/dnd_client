@@ -13,7 +13,7 @@ class DiceRoller
   end
   
   def roll_die
-    1.step(sides.to_i, 1).to_a.sample
+    rand(1..sides.to_i)
   end
   
   def persisted?
