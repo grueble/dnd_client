@@ -10,7 +10,7 @@ class Character < ActiveRecord::Base
                   
   validates :name, :level, :hit_points, :hit_die, :strength, :dexterity, :constitution, 
             :intelligence, :wisdom, :charisma, :base_attack_progression, :fortitude_save, 
-            :reflex_save, :will_save, :presence => true
+            :reflex_save, :will_save, :user_id, :presence => true
             
   validates :level, :hit_points, :hit_die, :strength, :dexterity, :constitution,
             :intelligence, :wisdom, :charisma, :numericality => { :only_integer => true, 

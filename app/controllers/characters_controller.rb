@@ -9,6 +9,7 @@ class CharactersController < ApplicationController
   
   def create
     @character = Character.new(params[:character])
+    # @character = current_user.character.build(params[:article])
     if @character.save
       redirect_to @character
     else

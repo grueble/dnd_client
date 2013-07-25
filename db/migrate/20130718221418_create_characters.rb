@@ -15,7 +15,6 @@ class CreateCharacters < ActiveRecord::Migration
       t.string :fortitude_save, :null => false
       t.string :reflex_save, :null => false
       t.string :will_save, :null => false
-      t.string :user_id, :null => false
 
       t.timestamps
     end

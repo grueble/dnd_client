@@ -1,1 +1,7 @@
 <%= @user.username %>
+
+<% if !@user.characters.empty? %>
+  <% @user.characters.each do |character| %>
+    <%= link_to "#{character.name}", character %>
+  <% end %>
+<% end %>
