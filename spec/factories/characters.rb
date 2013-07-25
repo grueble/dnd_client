@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :character do
+    user
     name 'Drizzt'
     level 1
     hit_die 8

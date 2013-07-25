@@ -1,3 +1,4 @@
+<br>
 <%= form_for @dice_roller, :url => dice_roller_path, :html => {:class => 'form-horizontal' } do |form| %>
   <% if @dice_roller.errors.present? %>
     <ul>
@@ -29,3 +30,13 @@
     <%= form.submit "Create", :class => 'btn btn-primary' %>
   </fieldset>
 <% end %>
+
+<div>
+  <% if logged_in? %>
+    <%= link_to "Sign Out", logout_path %><br>
+    <%= link_to "Create Character", new_character_path %>
+  <% else %>
+    <%= link_to "Sign In", login_path %> <br>
+    <%= link_to 'Create Account', new_user_path %>
+  <% end %>
+</div>

@@ -23,6 +23,8 @@ class Character < ActiveRecord::Base
             
   before_validation :initialize_hit_points, :on => :create
   
+  belongs_to :user
+  
   def attribute_bonus(attribute)
     (self.send(attribute) - 10) / 2
   end

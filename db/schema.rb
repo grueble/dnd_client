@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718221418) do
+ActiveRecord::Schema.define(:version => 20130725200947) do
 
   create_table "characters", :force => true do |t|
     t.string   "name",                    :null => false
@@ -28,8 +28,16 @@ ActiveRecord::Schema.define(:version => 20130718221418) do
     t.string   "fortitude_save",          :null => false
     t.string   "reflex_save",             :null => false
     t.string   "will_save",               :null => false
+    t.string   "user_id",                 :null => false
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username",        :null => false
+    t.string   "password_digest", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

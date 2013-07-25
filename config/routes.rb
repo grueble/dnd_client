@@ -1,6 +1,14 @@
 DndClient::Application.routes.draw do
   resource :dice_roller, :only => [ :create ]
+  
   resources :characters, :only => [ :new, :show, :create ]
+  
+  resources :users, :only => [ :show, :new, :create ]
+  
+  resource :session, :only => [ :create ]
+  
+  get 'login', :to => 'sessions#new'
+  get 'logout', :to =>  'sessions#destroy'
   
   root :to => 'dice_rollers#new'
   # The priority is based upon order of creation:
