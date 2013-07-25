@@ -90,12 +90,32 @@
   </fieldset>
   
   <fieldset>
-    <div>
-      <%= form.select :base_attack_progression, 'Base Attack Bonus' => Character::BASE_ATK %>
-      <%= form.select :fortitude_save, 'Fortitude Save' => Character::BASE_SAVE %>
-      <br>
-      <%= form.select :reflex_save, 'Reflex Save' => Character::BASE_SAVE %>
-      <%= form.select :will_save, 'Will Save' => Character::BASE_SAVE %>
+    <div class="control-group">
+      <%= form.label :base_attack_progression, 'Base Attack Bonus', :class => 'control-label' %>
+      <div class="controls">
+        <%= form.select :base_attack_progression, Character::BASE_ATK %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= form.label :fortitude_save, 'Fortitude Save', :class => 'control-label' %>
+      <div class="controls">
+        <%= form.select :fortitude_save, Character::BASE_SAVE %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= form.label :reflex_save, 'Reflex Save', :class => 'control-label' %>
+      <div class="controls">
+        <%= form.select :reflex_save, Character::BASE_SAVE %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= form.label :will_save, 'Will Save', :class => 'control-label' %>
+      <div class="controls">
+        <%= form.select :will_save, Character::BASE_SAVE %>
+      </div>
     </div>
   </fieldset>
   
