@@ -3,9 +3,14 @@ class DiceRoller
   extend ActiveModel::Translation
   include ActiveModel::Conversion
   
+  SIDE_VALUES = [ 1, 2, 4, 6, 8, 10, 12, 20, 100 ]
+  
   attr_accessor :num_dice, :sides
   
-  validates :num_dice, :sides, :presence => true, :numericality => {:only_integer => true}
+  validates :num_dice, :sides, :presence => true, 
+            :numericality => {:only_integer => true, :greater_than => 0 }
+            
+  validates :sides, :inclusion => { :in => SIDE_VALUES }
   
   def initialize(attributes = {})
     @num_dice = attributes[:num_dice]
@@ -13,7 +18,7 @@ class DiceRoller
   end
   
   def roll_die
-    1.step(sides.to_i, 1).to_a.sample
+    rand(1..sides.to_i)
   end
   
   def persisted?

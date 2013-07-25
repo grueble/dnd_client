@@ -1,0 +1,64 @@
+<dl class="dl-horizontal">
+  <dt> Name: </dt>
+  <dd> <%= @character.name %>, lvl. <%= @character.level %> </dd>
+  <dt> HP: </dt>
+  <dd> <%= @character.hit_points %> </dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt> STR: </dt>
+  <dd>
+    <%= @character.strength %> | +
+    <%= @character.attribute_bonus(:strength) %> <br>
+  </dd>
+  
+  <dt> DEX: </dt>
+  <dd>
+  <%= @character.dexterity %> | +
+  <%= @character.attribute_bonus(:dexterity) %> <br>
+  </dd>
+  
+  <dt> CON: </dt>
+  <dd>
+  <%= @character.constitution %> | +
+  <%= @character.attribute_bonus(:constitution) %> <br>
+  </dd>
+  
+  <dt> INT: </dt>
+  <dd>
+  <%= @character.intelligence %> | +
+  <%= @character.attribute_bonus(:intelligence) %> <br>
+  </dd>
+  
+  <dt> WIS: </dt>
+  <dd>
+  <%= @character.wisdom %> | +
+  <%= @character.attribute_bonus(:wisdom) %> <br>
+  </dd>
+  
+  <dt> CHA: </dt>
+  <dd>
+  <%= @character.charisma %> | +
+  <%= @character.attribute_bonus(:charisma) %> <br>
+  </dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt> Fort: </dt>
+  <dd> <%= @character.calculate_fortitude %> </dd>
+  <dt> Reflex: </dt>
+  <dd> <%= @character.calculate_reflex %> </dd>
+  <dt> Will: </dt>
+  <dd> <%= @character.calculate_will %> </dd>
+<dl>
+
+<dl class="dl-horizontal">
+  <dt> Base Atk: </dt>
+  <dd> <%= @character.calculate_base_attack %> </dd>
+  <dt> Grapple: </dt>
+  <dd> <%= @character.calculate_grapple %> </dd>
+  <dt> Melee Atk Bonus: </dt>
+  <dd> <%= @character.calculate_base_attack + @character.attribute_bonus(:strength) %> </dd>
+  <dt> Ranged Atk Bonus: </dt>
+  <dd> <%= @character.calculate_base_attack + @character.attribute_bonus(:dexterity) %> </dd>
+<dl>
