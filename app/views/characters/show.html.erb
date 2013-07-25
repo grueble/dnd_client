@@ -58,7 +58,7 @@
   <dt> Grapple: </dt>
   <dd> <%= @character.calculate_grapple %> </dd>
   <dt> Melee Atk Bonus: </dt>
-  <dd> <%= @character.calculate_base_attack + @character.strength %> </dd>
+  <dd> <%= @character.calculate_base_attack + @character.attribute_bonus(:strength) %> </dd>
   <dt> Ranged Atk Bonus: </dt>
-  <dd> <%= @character.calculate_base_attack + @character.dexterity %> </dd>
+  <dd> <%= @character.calculate_base_attack + @character.attribute_bonus(:dexterity) %> </dd>
 <dl>

@@ -3,8 +3,11 @@ require 'spec_helper'
 describe DiceRoller do
   it { should validate_presence_of :num_dice }
   it { should validate_presence_of :sides }
+  
   it { should validate_numericality_of :num_dice }
   it { should validate_numericality_of :num_dice }
+  
+  it { should ensure_inclusion_of(:sides).in_array([ 1, 2, 4, 6, 8, 10, 12, 20, 100 ]) }
   
   describe '#roll_die' do
     let(:dice_roller) { DiceRoller.new(:num_dice => 1, :sides => 6) }
