@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20130725223554) do
     t.string   "will_save",               :null => false
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
-    t.string   "user_id",                 :null => false
+    t.integer  "user_id",                 :null => false
   end
 
   create_table "users", :force => true do |t|

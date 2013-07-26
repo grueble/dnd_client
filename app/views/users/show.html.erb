@@ -1,7 +1,8 @@
 <%= @user.username %>
 
+<br>
 <% if !@user.characters.empty? %>
   <% @user.characters.each do |character| %>
-    <%= link_to "#{character.name}", character %>
+    <%= link_to "#{character.name}", character %> lvl. <%= character.level %>
   <% end %>
 <% end %>
