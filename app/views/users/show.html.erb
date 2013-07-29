@@ -2,7 +2,7 @@
 
 <br>
 <% if !@user.characters.empty? %>
-  <% @user.characters.each do |character| %>
-    <%= link_to "#{character.name}", character %> lvl. <%= character.level %>
-  <% end %>
+  <ul><% @user.characters.each do |character| %>
+    <li><%= link_to "#{character.name}", character %> lvl. <%= character.level %></li>
+  <% end %></ul>
 <% end %>
