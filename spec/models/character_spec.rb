@@ -48,6 +48,8 @@ describe Character do
   it { should ensure_inclusion_of(:reflex_save).in_array(['good', 'poor']) }
   it { should ensure_inclusion_of(:will_save).in_array(['good', 'poor']) }
   
+  it { should belong_to(:user) }
+  
   describe 'initializing hit points on create' do
     it "correctly stores a character's hp" do
       subject.hit_points.should == 7
