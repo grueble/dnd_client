@@ -21,11 +21,12 @@
     <div id="container">
       <div class="navbar">
         <div class="navbar-inner">
-          <a class="brand" href="/articles">DnD Client</a>
+          <a class="brand" href="/">DnD Client</a>
           <ul class="nav">
             <% if logged_in? %>
               <li><%= link_to "Sign Out", logout_path %></li>
               <li><%= link_to "Create Character", new_character_path %></li>
+              <li><%= link_to "Create Game", new_game_path %>
             <% else %>
               <li><%= link_to "Sign In", login_path %></li>
               <li><%= link_to 'Create Account', new_user_path %></li>
