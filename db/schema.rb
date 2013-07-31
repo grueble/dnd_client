@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(:version => 20130731190516) do
   end
 
   create_table "players", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "character_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "game_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
