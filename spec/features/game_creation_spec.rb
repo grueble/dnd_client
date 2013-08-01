@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe 'the game creation process' do
   context 'signed in' do
-  let(:user) { create(:user) }
-  
-  before do
-    sign_in_as(user)
-  end
+    let(:user) { create(:user) }
+    
+    before do
+      sign_in_as(user)
+    end
   
     it 'creates a game' do
       visit '/games/new'
@@ -22,11 +22,9 @@ describe 'the game creation process' do
     end
   end
   
-  it "fails to create an account" do
+  it "fails to create an game" do
     visit '/games/new'
-    
-    expect { click_button 'Create' }.to_not change{ Game.count }
-    
-    page.should have_content "Title can't be blank"
+
+    page.should have_content "You must be logged in to perform this action"
   end
 end

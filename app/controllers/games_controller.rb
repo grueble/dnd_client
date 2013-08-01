@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_filter :login_required, :only => [:new, :create]
+  
   def new
     @game = Game.new
   end

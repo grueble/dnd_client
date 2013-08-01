@@ -1,8 +1,6 @@
-<u><%= @game.title %></u><br>
-<b>DM:</b> <%= @game.dungeon_master.username %><br>
-<b>Players:</b> <% @game.users.each do |player| %>
-<%= player %>, 
-<% end %>
+<u><%= @game.title %></u> <br>
+<b>DM:</b> <%= @game.dungeon_master.username %> <br>
+<b>Players:</b> <%= @game.users.to_sentence %>
 
 <br>
 <i><%= @game.description %></i>
