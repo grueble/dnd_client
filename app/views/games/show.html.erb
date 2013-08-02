@@ -1,9 +1,13 @@
-<u><%= @game.title %></u> <br>
-<b>DM:</b> <%= @game.dungeon_master.username %> <br>
-<b>Players:</b> <%= @game.users.to_sentence %>
+<h3><%= @game.title %></h3>
 
-<br>
-<i><%= @game.description %></i>
+<dl class="dl-horizontal">
+  <dt> DM: </dt> <dd> <%= @game.dungeon_master.username %> <br> </dd>
+  <dt> Players: </dt> <dd> <%= @game.users.to_sentence %> <br> <dd>
+</dl>
 
-<br>
-<%= @game.body %>
+
+<p><%= @game.description %></p>
+
+<div>
+  <%= simple_format @game.body %>
+</div>
