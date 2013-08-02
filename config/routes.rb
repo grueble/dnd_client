@@ -3,6 +3,7 @@ DndClient::Application.routes.draw do
   resources :characters, :only => [ :new, :show, :create ]
   resources :users, :only => [ :show, :new, :create ]
   resource :session, :only => [ :create ]
+  resources :games, :only => [ :new, :show, :create]
   
   get 'login', :to => 'sessions#new'
   get 'logout', :to =>  'sessions#destroy'

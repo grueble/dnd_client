@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :characters
+  has_many :games, :through => :players
+  has_many :players
+  
+  has_many :campaigns, :class_name => 'Game', :foreign_key => "dungeon_master_id"
 end

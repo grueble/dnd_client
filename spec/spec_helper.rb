@@ -28,6 +28,7 @@ RSpec.configure do |config|
   #FactoryGirl syntax methods
   config.include FactoryGirl::Syntax::Methods
   config.include DndClient::IntegrationHelper, :type => :feature
+  config.include DndClient::AuthenticationHelper, :type => :controller
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
