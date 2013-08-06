@@ -7,8 +7,7 @@ class PlayersController < ApplicationController
   end
   
   def create
-    @player = Player.new(params[:player])
-    @player.game_id = @game.id
+    @player = Player.new(params[:player].merge(:game_id => @game.id))
     if @player.save
       redirect_to @game, :notice => "You have successfully added a player"
     else

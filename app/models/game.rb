@@ -1,4 +1,4 @@
-class Game < ActiveRecord::Base  
+class Game < ActiveRecord::Base
   attr_accessible :title, :description, :body
   
   validates :title, :dungeon_master_id, :presence => true

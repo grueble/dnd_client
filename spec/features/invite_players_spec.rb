@@ -11,7 +11,9 @@ describe 'adding players to a game' do
     end
     
     it 'adds a player to the game' do
-      visit "/games/#{game.id}/players/new"
+      visit "/games/#{game.id}"
+      
+      click_link 'Add Player'
       
       select 'test', :from => 'Player'
       
