@@ -1,0 +1,15 @@
+<div class="container">
+  <table class="table table-bordered">
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td>
+            <strong>
+              <%= link_to game.title, game %>
+            </strong>
+          </td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
+</div>

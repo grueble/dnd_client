@@ -18,4 +18,8 @@ class GamesController < ApplicationController
       render "new"
     end
   end
+  
+  def index
+    @games = Game.order("created_at DESC")
+  end
 end

@@ -27,10 +27,12 @@
               <li><%= link_to "Sign Out", logout_path %></li>
               <li><%= link_to "Create Character", new_character_path %></li>
               <li><%= link_to "Create Game", new_game_path %>
+              
             <% else %>
               <li><%= link_to "Sign In", login_path %></li>
               <li><%= link_to 'Create Account', new_user_path %></li>
             <% end %>
+              <li><%= link_to 'Games Index', games_path %></li>
           </ul>
         </div>
       </div>

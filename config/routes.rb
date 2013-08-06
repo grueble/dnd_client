@@ -3,7 +3,7 @@ DndClient::Application.routes.draw do
   resources :characters, :only => [ :new, :show, :create ]
   resources :users, :only => [ :show, :new, :create ]
   resource :session, :only => [ :create ]
-  resources :games, :only => [ :new, :show, :create] do
+  resources :games, :only => [ :new, :show, :create, :index ] do
     resources :players, :only => [ :new, :create ]
   end
   
