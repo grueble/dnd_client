@@ -11,4 +11,13 @@ class User < ActiveRecord::Base
   has_many :players
   
   has_many :campaigns, :class_name => 'Game', :foreign_key => "dungeon_master_id"
+  
+  scope :uninvited_for, lambda { |game|
+    user_ids = game.user_ids << game.dungeon_master_id
+    where("users.id NOT IN (?)", user_ids)
+  }
+
+  def to_s
+    username
+  end
 end
