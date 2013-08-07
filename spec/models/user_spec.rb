@@ -13,4 +13,14 @@ describe User do
   it { should validate_uniqueness_of(:username) }
   
   it { should have_many(:characters) }
+  
+  describe '.uninvited_for' do
+    let!(:user1) { create(:user) }
+    let!(:user2) { create(:user) }
+    let!(:game) { create(:game, :dungeon_master_id => user1.id)}
+    
+    it "returns all articles in the correct order" do
+      User.uninvited_for(game).should == [ user2 ]
+    end
+  end
 end

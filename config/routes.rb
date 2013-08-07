@@ -1,9 +1,11 @@
 DndClient::Application.routes.draw do
   resource :dice_roller, :only => [ :create ]
-  resources :characters, :only => [ :new, :show, :create ]
+  resources :characters, :only => [ :new, :show, :create, :index ]
   resources :users, :only => [ :show, :new, :create ]
   resource :session, :only => [ :create ]
-  resources :games, :only => [ :new, :show, :create]
+  resources :games, :only => [ :new, :show, :create, :index ] do
+    resources :players, :only => [ :new, :create ]
+  end
   
   get 'login', :to => 'sessions#new'
   get 'logout', :to =>  'sessions#destroy'

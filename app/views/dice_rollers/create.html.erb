@@ -1,5 +1,5 @@
 <% @dice_roller.rolled_dice.each do |die| %>
-  <%= @dice_roller.sides %>-sided die roll = <%= die %>
+  <%= @dice_roller.sides %>-sided die roll = <%= die %><br>
 <% end %>
 <br>
-<%= button_to("New Dice", root_url) %>
+<%= button_to("New Dice", root_url, :class => 'btn btn-primary') %>

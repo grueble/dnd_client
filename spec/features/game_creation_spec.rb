@@ -15,7 +15,6 @@ describe 'the game creation process' do
       
       expect { 
         click_button 'Create' 
-        save_and_open_page
       }.to change{ Game.count }.by(1)
       
       page.should have_content 'My Game'

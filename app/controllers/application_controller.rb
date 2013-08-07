@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
   def sign_in(user)
     session[:current_user_id] = user.id
   end
+  
+  def load_game
+    @game = Game.find(params[:game_id])
+  end
 end

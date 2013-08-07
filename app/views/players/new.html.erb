@@ -1,0 +1,23 @@
+<br>
+<%= form_for @player, :url => game_players_path, :html => {:class => 'form-horizontal' } do |form| %>
+  <% if @player.errors.present? %>
+    <ul>
+      <% @player.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :user_id, 'Player', :class => 'control-label' %>
+      <div class="controls">
+        <%= form.select(:user_id, User.uninvited_for(@game).collect { |user| [ user.username, user.id ] } ) %>
+      </div>
+    </div>
+  </fieldset>
+  
+  <fieldset class="form-actions">
+    <%= form.submit "Add", :class => 'btn btn-primary' %>
+  </fieldset>
+<% end %>

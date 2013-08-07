@@ -5,5 +5,6 @@ FactoryGirl.define do
     sequence (:title) {|n| "game #{n}"}
     description 'a generic game'
     body 'insert game content here'
+    association :dungeon_master, :factory => :user
   end
 end
