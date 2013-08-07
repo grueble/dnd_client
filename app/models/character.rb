@@ -26,7 +26,11 @@ class Character < ActiveRecord::Base
   belongs_to :user
   
   def attribute_bonus(attribute)
-    (self.send(attribute) - 10) / 2
+    if self.send(attribute).present?
+      (self.send(attribute) - 10) / 2
+    else
+      0
+    end
   end
   
   def calculate_base_attack
@@ -57,7 +61,11 @@ class Character < ActiveRecord::Base
   end
 
   def base_hit_points
-    hit_die + attribute_bonus(:constitution)
+    if hit_die.present? 
+      hit_die + attribute_bonus(:constitution)
+    else
+      8 + attribute_bonus(:constitution)
+    end
   end
 
   def hit_points_rolled_dice
@@ -65,8 +73,10 @@ class Character < ActiveRecord::Base
   end
 
   def hit_points_per_level
-    (level - 1).times do |l| 
-      self.hit_points += (hit_points_rolled_dice[l] + attribute_bonus(:constitution))
+    if level.present?
+      (level - 1).times do |l| 
+        self.hit_points += (hit_points_rolled_dice[l] + attribute_bonus(:constitution))
+      end
     end
   end
 
