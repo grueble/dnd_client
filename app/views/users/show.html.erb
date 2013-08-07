@@ -1,8 +1,28 @@
-<%= @user.username %>
+Username: <strong><%= @user.username %></strong>
 
-<br>
-<% if !@user.characters.empty? %>
-  <ul><% @user.characters.each do |character| %>
-    <li><%= link_to "#{character.name}", character %> lvl. <%= character.level %></li>
-  <% end %></ul>
-<% end %>
+<div>
+  <% if !@user.characters.empty? %>
+    <h4>Characters</h4>
+    <ul><% @user.characters.each do |character| %>
+      <li><%= link_to "#{character.name}", character %> lvl. <%= character.level %></li>
+    <% end %></ul>
+  <% end %>
+</div>
+
+<div>
+  <% if !@user.games.empty? %>
+    <h4>Games as a Player</h4>
+    <ul><% @user.games.each do |game| %>
+      <li><%= link_to "#{game.title}", game %></li>
+    <% end %></ul>
+  <% end %>
+</div>
+
+<div>
+  <% if !@user.campaigns.empty? %>
+    <h4>Campaigns</h4>
+    <ul><% @user.campaigns.each do |campaign| %>
+      <li><%= link_to "#{campaign.title}", campaign %></li>
+    <% end %></ul>
+  <% end %>
+</div>
