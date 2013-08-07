@@ -1,0 +1,15 @@
+<div class="container">
+  <table class="table table-bordered">
+    <tbody>
+      <% @characters.each do |character| %>
+        <tr>
+          <td>
+            <strong>
+              <%= link_to character.name, character %>
+            </strong>
+          </td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
+</div>

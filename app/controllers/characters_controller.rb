@@ -15,4 +15,8 @@ class CharactersController < ApplicationController
       render :new
     end
   end
+  
+  def index
+    @characters = Character.order("created_at DESC")
+  end
 end
